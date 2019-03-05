@@ -102,3 +102,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+Assignment-2/utils/datasets/
