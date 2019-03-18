@@ -7,6 +7,7 @@ Sahil Chopra <schopra8@stanford.edu>
 """
 
 import sys
+from tqdm import tqdm
 from copy import deepcopy
 class PartialParse(object):
     def __init__(self, sentence):
@@ -121,13 +122,14 @@ def minibatch_parse(sentences, model, batch_size):
     ###             is being accessed by `partial_parses` and may cause your code to crash.
     partial_parses = [PartialParse(sentence) for sentence in sentences]
     unfinished_parses = partial_parses[:]
+    pbar = tqdm(total=len(unfinished_parses),desc='Parsing')
     while len(unfinished_parses) > 0:
         mini_batch = unfinished_parses[:batch_size]
         for parser,parser_next_step in zip(mini_batch,model.predict(mini_batch)):
             parser.parse_step(parser_next_step)
             if parser.is_parsed():
                 unfinished_parses.remove(parser)
-    print('Done with mini-batch parse!')
+                pbar.update(1)
     dependencies = [parser.dependencies for parser in partial_parses]
     ### END YOUR CODE
 

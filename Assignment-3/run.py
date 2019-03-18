@@ -120,7 +120,7 @@ if __name__ == "__main__":
     # Note: Set debug to False, when training on entire corpus
     debug = sys.argv[1] if len(sys.argv)>1 else True
     # debug = False
-    print('debug = ',debug)    
+    print('debug =',debug)    
     # debug = False
 
     # assert(torch.__version__ == "1.0.0"),  "Please install torch version 1.0.0"
