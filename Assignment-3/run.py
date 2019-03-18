@@ -10,6 +10,7 @@ import os
 import pickle
 import math
 import time
+import sys
 
 from torch import nn, optim
 import torch
@@ -117,7 +118,9 @@ def train_for_epoch(parser, train_data, dev_data, optimizer, loss_func, batch_si
 
 if __name__ == "__main__":
     # Note: Set debug to False, when training on entire corpus
-    debug = True
+    debug = sys.argv[1] if len(sys.argv)>1 else True
+    # debug = False
+    print('debug = ',debug)    
     # debug = False
 
     # assert(torch.__version__ == "1.0.0"),  "Please install torch version 1.0.0"
