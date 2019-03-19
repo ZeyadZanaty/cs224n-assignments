@@ -63,10 +63,10 @@ class PartialParse(object):
             if len(self.buffer)>0:
                 self.stack.append(self.buffer.pop(0))
         elif transition == 'LA':
-            if len(self.stack) >2 or (len(self.stack)>1 and len(self.buffer)==0):
+            if len(self.stack) >1:
                 self.dependencies.append((self.stack[-1],self.stack.pop(-2)))
         elif transition == 'RA':
-            if len(self.stack) >2 or (len(self.stack)>1 and len(self.buffer)==0):
+            if len(self.stack) >1:
                 self.dependencies.append((self.stack[-2],self.stack.pop(-1)))
         ### END YOUR CODE
 
